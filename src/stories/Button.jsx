@@ -10,7 +10,8 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className='bg-gold'
+      //className={ ['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       {...props}
     >
       {label}
