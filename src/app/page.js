@@ -3,9 +3,9 @@ import Button from "@/components/ui/Button";
 const page = () => {
   return (
     <div>
-     <p className="text-gold">test1</p>
-     <p className="text-orange">test2</p>
-     <p className="text-dark-blue">test3</p>
+      <h1 className="font-Orbitron">Test 1</h1>
+      <h2 className="font-Orbitron">Test 2</h2>
+      <p className="text-dark-blue">test3</p>
     </div>
   );
 };
