@@ -1,5 +1,3 @@
-const { Orbitron } = require('next/font/google');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -20,6 +18,12 @@ module.exports = {
     },
     extend: {
       colors: {
+        'deep-blue': '#011640',
+        'darker-blue': '#011126',
+        'darkest-blue': '#00123A',
+        'golden-yellow': '#F2B950',
+        'warm-orange': '#F2994B',
+        
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -73,9 +77,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      fontFamily:{
-        Orbitron: ['Orbitron', 'sans-serif'],
-      }
+      fontFamily: {
+        orbitron: ['Orbitron', 'sans-serif'],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
