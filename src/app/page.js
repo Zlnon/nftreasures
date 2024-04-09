@@ -12,9 +12,10 @@ const page = () => {
   Click me
 </Button>
 
-<Button variant="default" className=" ml-4 bg-gradient-to-r from-[#F2994B] to-[#F2B950] text-deep-blue  font-extrabold py-2 px-4 rounded-3xl hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-[#F2994B]/50 shadow-lg transform active:scale-95 transition-transform">
+<Button variant="default" className="bg-gradient-to-r from-[#F2994B] to-[#F2B950] text-deep-blue  font-extrabold py-2 px-4 rounded-3xl hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-[#F2994B]/50 shadow-lg transform active:scale-95 transition-transform">
   Discover More
 </Button>
+<Button>test cool</Button>
 
 
     </div> 
