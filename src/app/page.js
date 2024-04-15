@@ -1,24 +1,39 @@
 import React from "react";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   return (
-    <div>
-      <h1 className="font-orbitron">Test 1</h1>
-      <h2 className="font-orbitron">Test 2</h2>
-      <p className="text-dark-blue">test3</p>
-      <Button variant="default">Button</Button>
-      <Button className="  bg-gradient-to-r from-warm-orange to-golden-yellow text-white font-bold py-2 px-4 rounded-xl">
-  Click me
-</Button>
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient
+            id="grad1"
+            cx="50%"
+            cy="50%"
+            r="50%"
+            fx="50%"
+            fy="50%"
+          >
+            <stop
+              offset="0%"
+              style={{ stopColor: "#011640", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#000000", stopOpacity: 1 }}
+            />
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad1)" />
+      </svg>
 
-<Button variant="default" className=" ml-4 bg-gradient-to-r from-[#F2994B] to-[#F2B950] text-deep-blue  font-extrabold py-2 px-4 rounded-3xl hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-[#F2994B]/50 shadow-lg transform active:scale-95 transition-transform">
-  Discover More
-</Button>
+      <Button variant="default" className="whitespace-break-spaces">
+        Discover More
+      </Button>
 
-
-    </div> 
-  )
-}
+      <Button variant="outline">All collections2</Button>
+    </div>
+  );
+};
 
 export default page;
