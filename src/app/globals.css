@@ -240,3 +240,11 @@
   }
   }
    
+  /* In your global.css or component's CSS module */
+.gradient-text {
+  background: linear-gradient(to right, #F2994B, #F2B950);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* This makes the text transparent, showing only the gradient */
+  display: inline; /* Required for spans to behave like inline elements */
+}

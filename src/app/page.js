@@ -6,9 +6,9 @@ const page = () => {
   return (
     <div>
       <Hero/>
-      <Nftcreator/>
+      {/* <Nftcreator/>
       <Hero/>
-      <Nftcreator/>
+      <Nftcreator/> */}
 
     </div>
     
