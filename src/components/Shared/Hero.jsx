@@ -3,6 +3,8 @@ import React from "react";
 // import EthereumImage from "public/assets/ethereum.png";
 
 import Image from "next/image";
+import { heroTitle } from "@/constants";
+import { Button } from "../ui/Button";
 
 const Hero = () => {
   return (
@@ -30,9 +32,9 @@ const Hero = () => {
         style={{
           objectFit: "cover",
           position: "absolute",
-          left: "12%",
+          left: "22%",
           zIndex: 3,
-          top: "25%",
+          top: "33%",
         }}
       />
 
@@ -46,43 +48,41 @@ const Hero = () => {
           objectFit: "cover",
           position: "absolute",
           right: "10%",
-          top: "20%",
+          top: "23%",
           zIndex: 3,
         }}
       />
 
-    
-
-      <div className="absolute top-0 left-0 right-0 z-20 flex justify-center items-center h-full">
-        <h1 className="text-white text-5xl font-orbitron font-extrabold ">
-          <span
-            className="bg-gradient-to-r from-[#f8a45b] from-25% via-[#f0a74b] 
-        to-[#fcd460] inline-block text-transparent bg-clip-text"
+      <div className=" absolute top-1/4 left-0 right-0 z-20 flex flex-col justify-center items-center text-center space-y-4">
+        <div>
+          <h1 className="text-white text-5xl font-orbitron font-bold ">
+            <span className="bg-gradient-to-r from-[#f8a45b] from-10% to-[#fcd460] inline-block text-transparent bg-clip-text">
+              {" "}
+              NFTs{" "}
+            </span>{" "}
+            Unlock Digita{" "}
+          </h1>
+          <h1
+            className="text-white text-5xl font-orbitron font-bold mt-3 tracking-widest
+           "
           >
-            {" "}
-            NFTs{" "}
-          </span>{" "}
-          Unlock Digita{"\n"} 
-          <span
-            className="bg-gradient-to-r from-[#f8a45b] from-25% via-[#f0a74b] 
-        to-[#fcd460] inline-block text-transparent bg-clip-text"
-          >
-            {" "}
-            Creativity{" "}
-          </span>
-          and Ownership
-        </h1>
+            <span className="bg-gradient-to-r from-[#f8a45b] from-20%  to-[#fcd460] inline-block text-transparent bg-clip-text">
+              {" "}
+              Creativity{" "}
+            </span>{" "}
+            and Ownership
+          </h1>
+          <div className="mt-5">
+            <p className="text-gray-400 text-lg md:text-xl lg:text-sm max-w-2xl mx-auto px-4 leading-normal">
+              {heroTitle}
+            </p>
+          </div>
+          <div className="flex  justify-center space-x-6 mt-6" >
+            <Button variant="default"> discover more</Button>
+            <Button variant="outline"> All collections </Button>
+          </div>
+        </div>
       </div>
-
-      {/* <div className="absolute top-0 left-0 right-0 z-20 flex flex-col justify-center items-center h-full space-y-4">
-        
-        <div className="bg-gradient-to-r from-[#f8a45b] via-[#f0a74b] to-[#fcd460] inline-block text-transparent bg-clip-text text-4xl md:text-5xl font-orbitron font-extrabold ">
-          NFTs Unlock Digital
-        </div>
-        <div className="bg-gradient-to-r from-[#f8a45b] via-[#f0a74b] to-[#fcd460] inline-block text-transparent bg-clip-text text-4xl md:text-5xl font-orbitron font-extrabold ">
-          Creativity and Ownership
-        </div>
-      </div> */}
     </div>
   );
 };
