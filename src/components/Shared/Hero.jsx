@@ -5,8 +5,16 @@ import React from "react";
 import Image from "next/image";
 import { heroTitle } from "@/constants";
 import { Button } from "../ui/Button";
-
+import NftCard from "../ui/NFTCard";
 const Hero = () => {
+
+  const nftData = {
+    title: "Mega Charizard",
+    image: "assets/nftcards/card1.webp", // replace with your image path
+    price: "3.0 ETH"
+  };
+
+
   return (
     <div className=" bg-svg relative h-screen overflow-hidden  z-0">
       {/*  Divider Image */}
@@ -82,6 +90,14 @@ const Hero = () => {
             <Button variant="outline"> All collections </Button>
           </div>
         </div>
+      </div>
+      {/* Here you add a single NFT card for testing */}
+      <div className="absolute inset-0 z-30 flex justify-center items-center">
+        <NftCard 
+          title={nftData.title} 
+          imageSrc={nftData.image} 
+          price={nftData.price} 
+        />
       </div>
     </div>
   );
