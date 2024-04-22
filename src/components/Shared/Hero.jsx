@@ -1,22 +1,17 @@
 import React from "react";
-// import BitcoinImage from " /public/bitcoin.png";
-// import EthereumImage from "public/assets/ethereum.png";
-
 import Image from "next/image";
 import { heroTitle } from "@/constants";
 import { Button } from "../ui/Button";
 import NftCard from "../ui/NFTCard";
 const Hero = () => {
-
   const nftData = {
     title: "Mega Charizard",
     image: "assets/nftcards/card1.webp", // replace with your image path
-    price: "3.0 ETH"
+    price: "0.34",
   };
 
-
   return (
-    <div className=" bg-svg relative h-screen overflow-hidden  z-0">
+    <div className=" bg-svg relative h-screen overflow-hidden  z-0 flex flex-col">
       {/*  Divider Image */}
       <Image
         src="/assets/divider.svg"
@@ -61,7 +56,7 @@ const Hero = () => {
         }}
       />
 
-      <div className=" absolute top-1/4 left-0 right-0 z-20 flex flex-col justify-center items-center text-center space-y-4">
+      <div className="flex-grow z-20 flex flex-col justify-center items-center text-center space-y-4 p-8">
         <div>
           <h1 className="text-white text-5xl font-orbitron font-bold ">
             <span className="bg-gradient-to-r from-[#f8a45b] from-10% to-[#fcd460] inline-block text-transparent bg-clip-text">
@@ -85,18 +80,21 @@ const Hero = () => {
               {heroTitle}
             </p>
           </div>
-          <div className="flex  justify-center space-x-6 mt-6" >
+          <div className="flex  justify-center space-x-6 mt-6">
             <Button variant="default"> discover more</Button>
             <Button variant="outline"> All collections </Button>
           </div>
         </div>
       </div>
+
+
+      <div className="h-32 md:h-48 lg:h-64"></div>
       {/* Here you add a single NFT card for testing */}
-      <div className="absolute inset-0 z-30 flex justify-center items-center">
-        <NftCard 
-          title={nftData.title} 
-          imageSrc={nftData.image} 
-          price={nftData.price} 
+      <div className="z-10 flex justify-center items-end pb-10 mt-auto">
+        <NftCard
+          title={nftData.title}
+          imageSrc={nftData.image}
+          price={nftData.price}
         />
       </div>
     </div>
