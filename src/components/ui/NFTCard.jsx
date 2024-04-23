@@ -1,9 +1,20 @@
+'use client'
 import Image from "next/image";
-import { FaEthereum, FaRegHeart } from "react-icons/fa";
+import { FaEthereum, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { BsClockHistory } from "react-icons/bs";
+import { useState } from "react";
 
 const NftCard = ({ title, imageSrc, price, likes, timeLeft }) => {
   const glowEffect = `shadow-[0_0_8px_rgba(255,255,255,0.6)]`;
+  const [isLiked, setIsLiked] = useState(false);
+  const [animationTrigger, setAnimationTrigger] = useState(false);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    setAnimationTrigger(true);
+    // Reset the animation trigger after the animation ends
+    setTimeout(() => setAnimationTrigger(false), 1000); // The timeout should match the CSS animation duration
+  };
 
   // Format time left (assuming timeLeft is in seconds)
   // You'll need to implement the logic for countdown yourself.
@@ -25,8 +36,13 @@ const NftCard = ({ title, imageSrc, price, likes, timeLeft }) => {
             <BsClockHistory />
             <span>{formatTimeLeft(30045)}</span>
           </div>
-          <button className="text-darker-blue bg-gradient-to-r from-warm-orange to-golden-yellow p-2 rounded-full">
-            <FaRegHeart size={16} />
+          <button className="text-darker-blue bg-gradient-to-r from-warm-orange to-golden-yellow p-2 rounded-full" onClick={handleLikeClick}>
+            {/* <FaRegHeart size={16} /> */}
+            {isLiked ? (
+              <FaHeart size={16} className={`heart-icon ${animationTrigger ? 'animate' : ''}`} />
+            ) : (
+              <FaRegHeart size={16} />
+            )}
           </button>
         </div>
 
