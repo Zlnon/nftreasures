@@ -6,12 +6,12 @@ import NftCard from "../ui/NFTCard";
 const Hero = () => {
   const nftData = {
     title: "Mega Charizard",
-    image: "assets/nftcards/card1.webp", // replace with your image path
+    image: "/assets/nftcards/card1.webp", // replace with your image path
     price: "0.34",
   };
 
   return (
-    <div className=" bg-svg relative h-screen overflow-hidden  z-0 flex flex-col">
+    <section className=" bg-svg relative h-screen overflow-hidden  z-0 flex flex-col">
       {/*  Divider Image */}
       <Image
         src="/assets/divider.svg"
@@ -90,14 +90,14 @@ const Hero = () => {
 
       <div className="h-32 md:h-48 lg:h-64"></div>
       {/* Here you add a single NFT card for testing */}
-      <div className="z-10 flex justify-center items-end pb-10 mt-auto">
+      <div className="z-10  flex items-center justify-center mt-auto">
         <NftCard
           title={nftData.title}
           imageSrc={nftData.image}
           price={nftData.price}
         />
       </div>
-    </div>
+    </section>
   );
 };
 
