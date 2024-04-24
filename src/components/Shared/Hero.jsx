@@ -56,7 +56,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="flex-grow z-20 flex flex-col justify-center items-center text-center space-y-4 p-8">
+      <div className="flex-grow z-20 flex flex-col justify-center items-center text-center space-y-4 p-8 mt-14">
         <div>
           <h1 className="text-white text-5xl font-orbitron font-bold ">
             <span className="bg-gradient-to-r from-[#f8a45b] from-10% to-[#fcd460] inline-block text-transparent bg-clip-text">
@@ -87,15 +87,16 @@ const Hero = () => {
         </div>
       </div>
 
-
       <div className="h-32 md:h-48 lg:h-64"></div>
       {/* Here you add a single NFT card for testing */}
-      <div className="z-10  flex items-center justify-center mt-auto">
-        <NftCard
-          title={nftData.title}
-          imageSrc={nftData.image}
-          price={nftData.price}
-        />
+      <div className="w-full px-4 pb-4 md:pb-8 z-10 flex justify-center items-end mt-auto">
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+          <NftCard
+            title={nftData.title}
+            imageSrc={nftData.image}
+            price={nftData.price}
+          />
+        </div>
       </div>
     </section>
   );
