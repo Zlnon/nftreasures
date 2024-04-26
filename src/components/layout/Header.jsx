@@ -6,53 +6,40 @@ import { navigation } from "@/constants"; // Replace with your navigation consta
 import { Button } from "../ui/Button";
 import { useEffect } from "react";
 
-function useOutsideAlerter(ref, onOutsideClick) {
+function useOutsideAlerter(refs, onOutsideClick) {
   useEffect(() => {
     function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+      const isClickOutside = Object.keys(refs).some((key) => {
+        const ref = refs[key];
+        return ref.current && !ref.current.contains(event.target);
+      });
+
+      if (isClickOutside) {
         onOutsideClick();
       }
     }
+    
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref, onOutsideClick]);
+  }, [refs, onOutsideClick]);
 }
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState({});
-  // Create a ref object with keys for each dropdown item.
-  const dropdownRefs = navigation.reduce((acc, item) => {
-    if (item.dropdown) {
-      acc[item.id] = useRef();
-    }
+  // Create a ref for each dropdown item
+  const dropdownRefs = navigation.filter(item => item.dropdown).reduce((acc, item) => {
+    acc[item.id] = useRef();
     return acc;
   }, {});
+  useOutsideAlerter(dropdownRefs, () => setDropdownOpen({}));
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      Object.entries(dropdownRefs).forEach(([key, ref]) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setDropdownOpen((prevState) => ({ ...prevState, [key]: false }));
-        }
-      });
-    }
+  
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  // navigation.forEach(item => {
-  //   // Initialize a ref for each dropdown if not already present
-  //   if (item.dropdown && !dropdownRefs.current[item.id]) {
-  //     dropdownRefs.current[item.id] = React.createRef();
-  //   }
-  // });
-
+  
+  
   const toggleNavigation = () => {
     setIsOpen(!isOpen);
     // Depending on your implementation, you may need to handle scroll locking
