@@ -5,35 +5,48 @@ export const heroTitle =
     {
       id:"0",
       title:"Home",
-      url:"#home"
+      url:"#home",
+      dropdown: [
+        { id: 'feature-updates', title: 'Feature Updates', url: '/feature-updates' },
+        { id: 'customer-stories', title: 'Customer Stories', url: '/customer-stories' },
+      ],
     },
     {
       id:"1",
       title:"About us",
       url:"#about-us"
+    
+    
     },
     {
       id:"2",
-      title:"About us",
-      url:"#about-us"
+      title:"Explore",
+      url:"#explore",
+      dropdown: [
+        { id: 'collections', title: 'Collections', url: '/collections' },
+        { id: 'artists', title: 'Artists', url: '/artists' },
+      ],
     },
     {
       id:"3",
-      title:"Explore",
-      url:"#explore"
+      title:"Pages",
+      url:"#pages",
+      dropdown: [
+        { id: 'faq', title: 'FAQ', url: '/faq' },
+        { id: 'pricing', title: 'Pricing', url: '/pricing' },
+      ],
     },
     {
       id:"4",
-      title:"Pages",
-      url:"#pages"
+      title:"Blog",
+      url:"#blog",
+      dropdown: [
+        { id: 'industry-news', title: 'Industry News', url: '/industry-news' },
+        { id: 'tips-and-tricks', title: 'Tips & Tricks', url: '/tips-tricks' },
+      ],
     },
     {
       id:"5",
-      title:"Blog",
-      url:"#blog"
-    },
-    {
-      id:"6",
       title:"Contact",
       url:"#contact"
     },

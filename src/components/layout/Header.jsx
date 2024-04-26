@@ -1,17 +1,73 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // Import the necessary assets, components, and hooks
-import { FaWallet } from "react-icons/fa"; // Import the wallet icon
+import { FaWallet, FaCaretDown, FaCaretUp } from "react-icons/fa"; // Import the wallet icon
 import { navigation } from "@/constants"; // Replace with your navigation constants
 import { Button } from "../ui/Button";
+import { useEffect } from "react";
 
+function useOutsideAlerter(ref, onOutsideClick) {
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onOutsideClick();
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, onOutsideClick]);
+}
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState({});
+  // Create a ref object with keys for each dropdown item.
+  const dropdownRefs = navigation.reduce((acc, item) => {
+    if (item.dropdown) {
+      acc[item.id] = useRef();
+    }
+    return acc;
+  }, {});
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      Object.entries(dropdownRefs).forEach(([key, ref]) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setDropdownOpen((prevState) => ({ ...prevState, [key]: false }));
+        }
+      });
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // navigation.forEach(item => {
+  //   // Initialize a ref for each dropdown if not already present
+  //   if (item.dropdown && !dropdownRefs.current[item.id]) {
+  //     dropdownRefs.current[item.id] = React.createRef();
+  //   }
+  // });
 
   const toggleNavigation = () => {
     setIsOpen(!isOpen);
     // Depending on your implementation, you may need to handle scroll locking
   };
+  const toggleDropdown = (id) => {
+    setDropdownOpen((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
+  const closeDropdowns = () => {
+    setDropdownOpen({});
+  };
+  // Close dropdown if click outside
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-darker-blue/90 text-white">
@@ -21,13 +77,44 @@ const Header = () => {
             Spiritual-NFT
           </span>
         </a>
-
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-4">
+        <nav className="hidden md:flex space-x-8 font-orbitron text-sm">
           {navigation.map((item) => (
-            <a key={item.id} href={item.url} className="hover:underline">
-              {item.title}
-            </a>
+            <div
+              key={item.id}
+              className="relative"
+              ref={item.dropdown ? dropdownRefs[item.id] : null}
+            >
+              <button
+                onClick={() => item.dropdown && toggleDropdown(item.id)}
+                className=" inline-flex items-center"
+              >
+                <span className="hover:bg-gradient-to-r from-[#f8a45b] from-20% to-[#fcd460] hover:text-transparent  hover:font-semibold hover:bg-clip-text">
+                  {item.title}
+                </span>
+                {item.dropdown &&
+                  (dropdownOpen[item.id] ? (
+                    <FaCaretUp className="ml-1 " />
+                  ) : (
+                    <FaCaretDown className="ml-1" />
+                  ))}
+              </button>
+              {item.dropdown && dropdownOpen[item.id] && (
+                <div className="absolute bg-darker-blue/90 text-white shadow-md mt-1 rounded">
+                  <nav className="flex flex-col">
+                    {item.dropdown.map((dropdownItem) => (
+                      <a
+                        key={dropdownItem.id}
+                        href={dropdownItem.url}
+                        className="hover:bg-gradient-to-r from-[#f8a45b] from-20% to-[#fcd460] hover:text-transparent  hover:font-semibold hover:bg-clip-text py-2 px-4 block"
+                      >
+                        {dropdownItem.title}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -38,13 +125,13 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 bg-black md:hidden">
+          <div className="absolute top-full left-0 right-0 bg-darker-blue/90 md:hidden">
             <nav className="flex flex-col items-center">
               {navigation.map((item) => (
                 <a
                   key={item.id}
                   href={item.url}
-                  className="hover:underline py-2"
+                  className="hover:bg-gradient-to-r from-[#f8a45b] from-20% to-[#fcd460] hover:text-transparent  hover:font-semibold hover:bg-clip-text py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.title}
