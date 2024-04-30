@@ -1,8 +1,15 @@
+'use client'
 import React from "react";
 import Image from "next/image";
-import { heroTitle } from "@/constants";
+import { heroTitle , creatures } from "@/constants";
 import { Button } from "../ui/Button";
 import NftCard from "../ui/NFTCard";
+import { Swiper,SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+// import 'swiper/modules/effect-cards.mjs'
+import SwiperCore, { EffectCoverflow, Pagination } from 'swiper/modules';
 const Hero = () => {
   const nftData = {
     title: "Mega Charizard",
@@ -11,7 +18,7 @@ const Hero = () => {
   };
 
   return (
-    <section className=" bg-svg relative max-h-screen overflow-hidden  z-0 flex flex-col p-6">
+    <section className=" bg-svg relative h-max overflow-hidden  z-0 flex flex-col p-6">
       {/*  Divider Image */}
       <Image
         src="/assets/divider.svg"
@@ -90,12 +97,28 @@ const Hero = () => {
       {/* <div className="h-32 md:h-48 lg:h-64"></div> */}
       {/* Here you add a single NFT card for testing */}
       <div className="w-full h-full px-4 pb-4 md:pb-8 z-10 flex justify-center items-end mt-auto">
-        
-          <NftCard
-            title={nftData.title}
-            imageSrc={nftData.image}
-            price={nftData.price}
-          />
+
+
+      <Swiper
+      effect={'coverflow'}
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView={'auto'}
+      coverflowEffect={{
+        "rotate": 50,
+        "stretch": 0,
+        "depth": 100,
+        "modifier": 1,
+        "slideShadows": true
+      }}
+      pagination={true}
+      className="mySwiper"
+    >
+      <SwiperSlide><img src="/assets/nftcards/card7.webp" alt="Image 1" className="object-cover w-[150] h-[200]"/></SwiperSlide>
+      <SwiperSlide><img src="/assets/nftcards/card10.webp" alt="Image 2" className="object-cover w-[150] h-[200]"/></SwiperSlide>
+      <SwiperSlide><img src="/assets/nftcards/card8.webp" alt="Image 3" className="object-cover w-[150] h-[200]"/></SwiperSlide>
+      {/* Add more SwiperSlides as needed */}
+    </Swiper>
         
       </div>
     </section>

@@ -54,15 +54,15 @@ export const heroTitle =
   ]
 
   export const creatures = [
-    { name: 'Fluffy Cosmic Creature ', imageSrc: '/assets/nftcards/card10.webp', price: '0.34' },
-    { name: 'Galactic Serpent', imageSrc: '/assets/nftcards/card1.webp', price: '0.72' },
-    { name: 'Mystic Tree Guardian', imageSrc: '/assets/nftcards/card2.webp', price: '0.48' },
-    { name: 'Ethereal Fluffball', imageSrc: '/assets/nftcards/card3.webp', price: '0.60' },
-    { name: 'Cybernetic Dragon', imageSrc: '/assets/nftcards/card4.webp', price: '1.82' },
-    { name: 'Celestial Fox', imageSrc: '/assets/nftcards/card5.webp', price: '0.85' },
-    { name: 'Enchanted Fae Cat', imageSrc: '/assets/nftcards/card6.webp', price: '0.63' },
-    { name: 'Mystical Sprite', imageSrc: '/assets/nftcards/card7.webp', price: '0.32' },
-    { name: 'Cosmic Bloom Creature', imageSrc: '/assets/nftcards/card8.webp', price: '0.10' },
-    { name: 'Luminous Mythic Fox', imageSrc: '/assets/nftcards/card9.webp', price: '0.90' },
+    { id:'1',name: 'Fluffy Cosmic Creature ', imageSrc: '/assets/nftcards/card10.webp', price: '0.34' },
+    { id:'2',name: 'Galactic Serpent', imageSrc: '/assets/nftcards/card1.webp', price: '0.72' },
+    { id:'3',name: 'Mystic Tree Guardian', imageSrc: '/assets/nftcards/card2.webp', price: '0.48' },
+    { id:'4',name: 'Ethereal Fluffball', imageSrc: '/assets/nftcards/card3.webp', price: '0.60' },
+    { id:'5',name: 'Cybernetic Dragon', imageSrc: '/assets/nftcards/card4.webp', price: '1.82' },
+    { id:'6',name: 'Celestial Fox', imageSrc: '/assets/nftcards/card5.webp', price: '0.85' },
+    { id:'7',name: 'Enchanted Fae Cat', imageSrc: '/assets/nftcards/card6.webp', price: '0.63' },
+    { id:'8',name: 'Mystical Sprite', imageSrc: '/assets/nftcards/card7.webp', price: '0.32' },
+    { id:'9',name: 'Cosmic Bloom Creature', imageSrc: '/assets/nftcards/card8.webp', price: '0.10' },
+    { id:'10',name: 'Luminous Mythic Fox', imageSrc: '/assets/nftcards/card9.webp', price: '0.90' },
     // Add other creatures here
   ];
