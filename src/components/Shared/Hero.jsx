@@ -6,12 +6,12 @@ import NftCard from "../ui/NFTCard";
 const Hero = () => {
   const nftData = {
     title: "Mega Charizard",
-    image: "/assets/nftcards/card1.webp", // replace with your image path
+    image: "/assets/nftcards/card7.webp", // replace with your image path
     price: "0.34",
   };
 
   return (
-    <section className=" bg-svg relative h-screen overflow-hidden  z-0 flex flex-col">
+    <section className=" bg-svg relative max-h-screen overflow-hidden  z-0 flex flex-col p-6">
       {/*  Divider Image */}
       <Image
         src="/assets/divider.svg"
@@ -56,7 +56,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="flex-grow z-20 flex flex-col justify-center items-center text-center space-y-4 p-8 mt-14">
+      <div className="flex-grow z-20 flex flex-col justify-center items-center text-center space-y-4 p-8 mt-32">
         <div>
           <h1 className="text-white text-5xl font-orbitron font-bold ">
             <span className="bg-gradient-to-r from-[#f8a45b] from-10% to-[#fcd460] inline-block text-transparent bg-clip-text">
@@ -87,16 +87,16 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="h-32 md:h-48 lg:h-64"></div>
+      {/* <div className="h-32 md:h-48 lg:h-64"></div> */}
       {/* Here you add a single NFT card for testing */}
-      <div className="w-full px-4 pb-4 md:pb-8 z-10 flex justify-center items-end mt-auto">
-        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+      <div className="w-full h-full px-4 pb-4 md:pb-8 z-10 flex justify-center items-end mt-auto">
+        
           <NftCard
             title={nftData.title}
             imageSrc={nftData.image}
             price={nftData.price}
           />
-        </div>
+        
       </div>
     </section>
   );

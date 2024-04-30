@@ -7,7 +7,7 @@ const page = () => {
     <div>
       <Header/>
       <Hero/>
-      <Nftcreator/>
+      {/* <Nftcreator/> */}
       
 
     </div>

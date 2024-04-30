@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import Image from "next/image";
-import { FaEthereum, FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaEthereum, FaHeart, FaRegHeart } from "react-icons/fa";
 import { BsClockHistory } from "react-icons/bs";
 import { useState } from "react";
 
@@ -27,28 +27,44 @@ const NftCard = ({ title, imageSrc, price, likes, timeLeft }) => {
 
   return (
     <div
-      className={`m-4 p-2 max-w-sm rounded-3xl flex flex-col bg-black/20 backdrop-blur-md ${glowEffect} overflow-hidden`}
+      className={`m-4 p-1 max-w-sm rounded-3xl flex flex-col bg-darker-blue/90 backdrop-blur-md ${glowEffect} overflow-hidden`}
     >
       <div className="relative">
         {/* Card header with timer and like button */}
-        <div className="absolute top-4 left-4 right-4 flex justify-end  space-x-2 items-center font-semibold">
-          <div className="flex items-center space-x-2 text-darker-blue bg-gradient-to-r from-warm-orange font-semibold to-golden-yellow py-1 px-3 rounded-full">
-            <BsClockHistory />
-            <span>{formatTimeLeft(30045)}</span>
-          </div>
-          <button className="text-darker-blue bg-gradient-to-r from-warm-orange to-golden-yellow p-2 rounded-full" onClick={handleLikeClick}>
-            {/* <FaRegHeart size={16} /> */}
-            {isLiked ? (
-              <FaHeart size={16} className={`heart-icon ${animationTrigger ? 'animate' : ''}`} />
-            ) : (
-              <FaRegHeart size={16} />
-            )}
-          </button>
-        </div>
 
         {/* Image */}
-        <div className="flex justify-center overflow-hidden rounded-3xl p ">
-          <Image src={imageSrc} alt={title} width={250} height={250} />
+        <div className=" relative flex justify-center overflow-hidden rounded-3xl  p-2 ">
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={250}
+            height={400}
+            className="rounded-3xl"
+          />
+          {/* Place Bid Button */}
+          <button className="bg-gradient-to-r from-warm-orange to-golden-yellow text-darker-blue font-bold font-orbitron py-2 px-4 rounded-3xl absolute bottom-4 left-1/2 transform -translate-x-1/2 shadow-darker-blue shadow-md">
+            Place Bid
+          </button>
+          <div className="absolute top-4 left-4 right-4 flex justify-end  space-x-2 items-center font-semibold">
+            <div className="flex items-center space-x-2 text-darker-blue bg-gradient-to-r from-warm-orange font-semibold to-golden-yellow py-1 px-3 rounded-full shadow-darker-blue shadow-sm">
+              <BsClockHistory />
+              <span>{formatTimeLeft(30045)}</span>
+            </div>
+            <button
+              className="text-darker-blue bg-gradient-to-r from-warm-orange to-golden-yellow p-2 rounded-full shadow-darker-blue shadow-sm "
+              onClick={handleLikeClick}
+            >
+              {/* <FaRegHeart size={16} /> */}
+              {isLiked ? (
+                <FaHeart
+                  size={16}
+                  className={`heart-icon ${animationTrigger ? "animate" : ""} `}
+                />
+              ) : (
+                <FaRegHeart size={16} />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Card content */}
@@ -58,11 +74,6 @@ const NftCard = ({ title, imageSrc, price, likes, timeLeft }) => {
             <FaEthereum size={20} />
             <div className="text-sm ">{price}</div>
           </div>
-
-          {/* Place Bid Button */}
-          <button className="bg-gradient-to-r from-warm-orange to-golden-yellow text-darker-blue font-bold py-2 px-4 rounded-xl mt-4">
-            Place Bid
-          </button>
         </div>
       </div>
     </div>
