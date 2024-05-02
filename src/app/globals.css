@@ -248,3 +248,21 @@
   color: transparent; /* This makes the text transparent, showing only the gradient */
   display: inline; /* Required for spans to behave like inline elements */
 }
+
+ /* .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+} */
+
+/* .swiper-slide Image {
+  display: flex;
+  width: 100%;
+}  */

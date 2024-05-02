@@ -1,15 +1,20 @@
-'use client'
-import React from "react";
+"use client";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { heroTitle , creatures } from "@/constants";
+import { heroTitle, creatures } from "@/constants";
 import { Button } from "../ui/Button";
 import NftCard from "../ui/NFTCard";
-import { Swiper,SwiperSlide } from "swiper/react";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-// import 'swiper/modules/effect-cards.mjs'
-import SwiperCore, { EffectCoverflow, Pagination } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+
+
+
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper/modules";
 const Hero = () => {
   const nftData = {
     title: "Mega Charizard",
@@ -18,7 +23,7 @@ const Hero = () => {
   };
 
   return (
-    <section className=" bg-svg relative h-max overflow-hidden  z-0 flex flex-col p-6">
+    <section className=" bg-svg relative  h-screen overflow-hidden  z-0 flex flex-col p-6">
       {/*  Divider Image */}
       <Image
         src="/assets/divider.svg"
@@ -94,32 +99,41 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* <div className="h-32 md:h-48 lg:h-64"></div> */}
-      {/* Here you add a single NFT card for testing */}
-      <div className="w-full h-full px-4 pb-4 md:pb-8 z-10 flex justify-center items-end mt-auto">
-
-
-      <Swiper
-      effect={'coverflow'}
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView={'auto'}
-      coverflowEffect={{
-        "rotate": 50,
-        "stretch": 0,
-        "depth": 100,
-        "modifier": 1,
-        "slideShadows": true
-      }}
-      pagination={true}
-      className="mySwiper"
-    >
-      <SwiperSlide><img src="/assets/nftcards/card7.webp" alt="Image 1" className="object-cover w-[150] h-[200]"/></SwiperSlide>
-      <SwiperSlide><img src="/assets/nftcards/card10.webp" alt="Image 2" className="object-cover w-[150] h-[200]"/></SwiperSlide>
-      <SwiperSlide><img src="/assets/nftcards/card8.webp" alt="Image 3" className="object-cover w-[150] h-[200]"/></SwiperSlide>
-      {/* Add more SwiperSlides as needed */}
-    </Swiper>
-        
+      <div className=" relative flex flex-col w-full h-full px-4 pb-4 md:pb-8 z-10  mt-auto">
+        <Swiper
+          effect={'coverflow'}
+          // spaceBetween={10}
+          grabCursor={true}
+          loop={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 20,
+            modifier: 5,
+            slideShadows: true,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          className="swiper"
+        >
+          <div className="flex items-center justify-center flex-col w-max h-max">
+            {creatures.map((creature, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={creature.imageSrc}
+                  alt={creature.name}
+                  width={200}
+                  height={100}
+                />
+                <div className=" absolute text-center font-orbitron text-white mt-2">
+                  {creature.name} - Ξ{creature.price}
+                </div>
+              </SwiperSlide>
+            ))}
+          </div>
+        </Swiper>
       </div>
     </section>
   );
